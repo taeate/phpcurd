@@ -6,8 +6,8 @@
     <title>Document</title>
 </head>
 <body>
+<h3>DB 연결 테스트 공간입니다.</h3>
 
-<a href="/crud/create.php">글쓰기</a>
 <br>
 
 <!-- <?php
@@ -24,6 +24,8 @@
   ?> -->
 
 
+<a href="/crud/create.php">글쓰기</a>
+<a href="/crud/list.php">리스트</a>
 
 </body>
 </html>

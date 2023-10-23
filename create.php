@@ -6,7 +6,7 @@
   <title>Document</title>
 </head>
 <body>
-<a href="/crud/db-connect.php">DB 연결 테스트</a>
+  <h3>글 작성 공간입니다.</h3>
 
 
   <form action="request.php" method="post">
@@ -14,8 +14,10 @@
           이메일 : <input type="text" name="email"><br>
           <input type="submit">
   </form>
+  <br>
 
-
+  <a href="/crud/db-connect.php">DB 연결 테스트</a>
+  <a href="/crud/list.php">리스트</a>
 
 </body>
 </html>

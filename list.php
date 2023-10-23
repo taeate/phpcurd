@@ -7,6 +7,8 @@
 </head>
 <body>
 
+<h3>질문 리스트 공간입니다.</h3>
+
 <?php
 // 데이터베이스 연결 설정
 $servername = "localhost"; // 데이터베이스 서버 주소
@@ -39,8 +41,11 @@ if ($result->num_rows > 0) {
 
 // MySQL 연결 닫기
 $conn->close();
+
 ?>
 
+<a href="/crud/create.php">글쓰기 </a>
+<a href="/crud/db-connect.php">DB 연결 테스트</a>
 
 
 </body>
