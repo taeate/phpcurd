@@ -6,47 +6,41 @@
     <title>Document</title>
 </head>
 <body>
+
 <?php
+// 데이터베이스 연결 설정
+$servername = "localhost"; // 데이터베이스 서버 주소
+$username = "root"; // MySQL 사용자 이름
+$password = ""; // MySQL 비밀번호
+$dbname = "article"; // 사용할 데이터베이스 이름
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "article";
-
-// 데이터베이스 연결 생성
-$connect = new mysqli($servername, $username, $password, $database);
+// MySQL에 연결
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // 연결 확인
-if ($connect->connect_error) {
-    die("데이터베이스 연결 실패: " . $connect->connect_error);
+if ($conn->connect_error) {
+    die("연결 실패: " . $conn->connect_error);
 }
 
-// 이후에는 쿼리를 실행할 수 있음
-$query = "SELECT * FROM board";
-$result = $connect->query($query);
+// 데이터베이스에서 데이터 가져오기
+$sql = "SELECT * FROM board";
+$result = $conn->query($sql);
 
-// 결과 처리 및 연결 닫기
-if ($result) {
+if ($result->num_rows > 0) {
+    // 결과 데이터 출력
+    echo "<ul>";
     while ($row = $result->fetch_assoc()) {
-        // 결과 처리 로직
+        echo "<li>" . $row["title"] . " - " . $row["content"] . "</li>";
     }
-    $result->close();
+    echo "</ul>";
 } else {
-    echo "쿼리 실행 오류: " . $connect->error;
+    echo "데이터가 없습니다.";
 }
 
-// 이제 다시 $connect 변수를 사용하여 다른 쿼리를 실행할 수 있음
-foreach ($connect->query("SHOW TABLES") as $database_row) {
-    echo "<h2>" . $database_row['Tables_in_article'] . "</h2>";
-    echo "<br>";
-}
-
-
-
-// 연결 닫기
-$connect->close();
-
+// MySQL 연결 닫기
+$conn->close();
 ?>
+
 
 
 </body>
